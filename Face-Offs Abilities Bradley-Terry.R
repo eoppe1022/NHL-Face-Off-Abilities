@@ -1,5 +1,6 @@
 library(tidyverse)
 library(BradleyTerry2)
+library(broom)
 library(bindrcpp)
 
 ## Reads in PBP Data from a folder titled 'nhl_pbp_files' -- Thank you, Manny!
