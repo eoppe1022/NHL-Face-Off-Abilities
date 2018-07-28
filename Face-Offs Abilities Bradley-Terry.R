@@ -170,4 +170,4 @@ face_off_data_total %>%
   filter(face_offs_taken >= 100) %>%
   mutate(face_off_pct_rank = dense_rank(desc(face_off_pct))) %>%
   mutate(ability_rank = dense_rank(desc(ability))) %>%
-  mutate(diff_rank = face_off_pct_rank - ability_rank) %>% View()
+  mutate(diff_rank = face_off_pct_rank - ability_rank)
