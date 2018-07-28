@@ -3,6 +3,7 @@ library(BradleyTerry2)
 library(bindrcpp)
 
 ## Reads in PBP Data from a folder titled 'nhl_pbp_files' -- Thank you, Manny!
+## Skip down if using the data I provided
 pbp_data <- list.files("~/nhl_pbp_files", full.names = TRUE) %>% 
   set_names(basename(.)) %>%
   map_df(~ read_csv(., col_types = cols(highlight_code = col_skip())))
@@ -19,10 +20,13 @@ mydata <- pbp_data %>%
 
 
 saveRDS(mydata, "face_off_pbp_data_07_18.rds")
+
+
+## Reads in data I provided -- same as 'mydata'
 mydata <- read_rds("face_off_pbp_data_07_18.rds")
 
 
-## Builds the Bradley-Terry Model and Finds Abilities
+## Builds the Bradley-Terry Model and Finds Abilities, adjusted for Home Ice Advantage and Quality of Competition
 get_model_output <- function(.season) {
   
   progress_bar$tick()$print()
